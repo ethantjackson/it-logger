@@ -1,0 +1,47 @@
+{
+  "logs": [
+    {
+      "message": "urgent test",
+      "attention": true,
+      "date": "2021-06-30T19:31:23.145Z",
+      "tech": "John Doe",
+      "id": 1
+    },
+    {
+      "message": "not urgent test",
+      "attention": false,
+      "date": "2021-06-30T19:32:41.702Z",
+      "tech": "Sam Smith",
+      "id": 2
+    },
+    {
+      "message": "test",
+      "attention": false,
+      "date": "2021-06-30T19:34:02.901Z",
+      "tech": "Bob Dylan",
+      "id": 3
+    }
+  ],
+  "techs": [
+    {
+      "id": 2,
+      "firstName": "Sam",
+      "lastName": "Smith"
+    },
+    {
+      "id": 3,
+      "firstName": "Bob",
+      "lastName": "Dylan"
+    },
+    {
+      "firstName": "Ethan",
+      "lastName": "Jackson",
+      "id": 4
+    },
+    {
+      "firstName": "Chet",
+      "lastName": "Baker",
+      "id": 5
+    }
+  ]
+}
