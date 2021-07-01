@@ -8,7 +8,6 @@ import {
   SET_LOADING,
   LOGS_ERROR,
   SEARCH_LOGS,
-  CLEAR_LOGS,
 } from '../actions/types';
 
 const initialState = {
@@ -51,6 +50,12 @@ const LogReducer = (state = initialState, action) => {
           if (log.id !== action.payload.id) return log;
           return action.payload;
         }),
+      };
+    case SEARCH_LOGS:
+      return {
+        ...state,
+        logs: action.payload,
+        loading: false,
       };
     case SET_LOADING:
       return { ...state, loading: true };
