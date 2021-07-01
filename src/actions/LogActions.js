@@ -135,7 +135,6 @@ export const searchLogs = (param) => async (dispatch) => {
     const res = await fetch('/logs/?q=' + param);
     const data = await res.json();
 
-    console.log('reached');
     dispatch({
       type: SEARCH_LOGS,
       payload: data,
