@@ -9,7 +9,7 @@ import Preloader from '../layout/Preloader';
 const Logs = ({ log: { logs, loading }, getLogs }) => {
   useEffect(() => {
     getLogs();
-  });
+  }, []);
 
   if (loading || logs === null) return <Preloader />;
 

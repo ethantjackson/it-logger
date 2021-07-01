@@ -1,4 +1,10 @@
-import { GET_LOGS, ADD_LOG, SET_LOADING, LOGS_ERROR } from './types';
+import {
+  GET_LOGS,
+  ADD_LOG,
+  DELETE_LOG,
+  SET_LOADING,
+  LOGS_ERROR,
+} from './types';
 
 // export const getLogs = () => {
 //   return async (dispatch) => {
@@ -55,6 +61,25 @@ export const addLog = (log) => async (dispatch) => {
     dispatch({
       type: ADD_LOG,
       payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: err.response.data,
+    });
+  }
+};
+
+export const deleteLog = (id) => async (dispatch) => {
+  try {
+    setLoading();
+    await fetch('/logs/' + id, {
+      method: 'DELETE',
+    });
+
+    dispatch({
+      type: DELETE_LOG,
+      payload: id,
     });
   } catch (err) {
     dispatch({
