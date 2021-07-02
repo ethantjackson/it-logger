@@ -11,7 +11,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  logs: null,
+  logs: [],
   current: null,
   loading: false,
   error: null,

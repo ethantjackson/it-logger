@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addLog } from '../../actions/LogActions';
 
-const AddLogModal = ({ addLog }) => {
+const AddLogModal = ({ tech: { techs, loading }, addLog }) => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
@@ -19,11 +19,12 @@ const AddLogModal = ({ addLog }) => {
         date: new Date(),
         tech: tech,
       });
+
+      M.toast({ html: `Log added by ${tech}` });
+
       setMessage('');
       setAttention(false);
       setTech('');
-
-      M.toast({ html: `Log added by ${tech}` });
     }
   };
 
@@ -61,9 +62,15 @@ const AddLogModal = ({ addLog }) => {
               <option value='' disabled>
                 Select Technician
               </option>
-              <option value='John Doe'>John Doe</option>
-              <option value='Sam Smith'>Sam Smith</option>
-              <option value='Bob Dylan'>Bob Dylan</option>
+              {!loading &&
+                techs.map((tech) => (
+                  <option
+                    key={tech.id}
+                    value={tech.firstName + ' ' + tech.lastName}
+                  >
+                    {tech.firstName} {tech.lastName}
+                  </option>
+                ))}
             </select>
           </div>
         </div>
@@ -102,11 +109,16 @@ const AddLogModal = ({ addLog }) => {
 
 AddLogModal.propTypes = {
   addLog: PropTypes.func.isRequired,
+  tech: PropTypes.object.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  tech: state.tech,
+});
 
 const modalStyle = {
   height: '75%',
   width: '75%',
 };
 
-export default connect(null, { addLog })(AddLogModal);
+export default connect(mapStateToProps, { addLog })(AddLogModal);
