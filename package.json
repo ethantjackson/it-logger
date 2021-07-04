@@ -6,8 +6,12 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.29.1",
+    "mongoose": "^5.13.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-materialize": "^3.9.8",
@@ -21,8 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "json-server": "json-server --watch db.json --port 5000",
-    "dev": "concurrently \"npm start\" \"npm run json-server\"",
+    "dev": "concurrently \"npm start\" \"nodemon ./server/app.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

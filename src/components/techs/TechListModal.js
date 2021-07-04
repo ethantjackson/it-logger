@@ -7,7 +7,8 @@ import TechItem from './TechItem';
 const TechListModal = ({ tech: { techs, loading }, getTechs }) => {
   useEffect(() => {
     getTechs();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [techs]);
 
   return (
     <div id='tech-list-modal' className='modal'>
@@ -17,7 +18,7 @@ const TechListModal = ({ tech: { techs, loading }, getTechs }) => {
           {!loading && techs.length === 0 ? (
             <p className='center'>No techs to show...</p>
           ) : (
-            techs.map((tech) => <TechItem key={tech.id} tech={tech} />)
+            techs.map((tech) => <TechItem key={tech._id} tech={tech} />)
           )}
         </ul>
       </div>

@@ -9,7 +9,8 @@ import Preloader from '../layout/Preloader';
 const Logs = ({ log: { logs, loading }, getLogs }) => {
   useEffect(() => {
     getLogs();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [logs]);
 
   if (loading || logs === null) return <Preloader />;
 
@@ -21,7 +22,7 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
       {!loading && logs.length === 0 ? (
         <p className='center'>No logs to show...</p>
       ) : (
-        logs.map((log) => <LogItem key={log.id} log={log} />)
+        logs.map((log) => <LogItem key={log._id} log={log} />)
       )}
     </ul>
   );

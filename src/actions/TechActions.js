@@ -29,12 +29,20 @@ export const addTech = (tech) => async (dispatch) => {
   try {
     setLoading();
 
+    var formBody = [];
+    for (var property in tech) {
+      var encodedKey = encodeURIComponent(property);
+      var encodedValue = encodeURIComponent(tech[property]);
+      formBody.push(encodedKey + '=' + encodedValue);
+    }
+    formBody = formBody.join('&');
+
     const res = await fetch('/techs', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
       },
-      body: JSON.stringify(tech),
+      body: formBody,
     });
     const data = await res.json();
 
@@ -50,17 +58,17 @@ export const addTech = (tech) => async (dispatch) => {
   }
 };
 
-export const deleteTech = (id) => async (dispatch) => {
+export const deleteTech = (_id) => async (dispatch) => {
   try {
     setLoading();
 
-    await fetch('/techs/' + id, {
+    await fetch('/techs/' + _id, {
       method: 'DELETE',
     });
 
     dispatch({
       type: DELETE_TECH,
-      payload: id,
+      payload: _id,
     });
   } catch (err) {
     dispatch({

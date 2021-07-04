@@ -6,6 +6,7 @@ import { getTechs } from '../../actions/TechActions';
 const TechSelectOptions = ({ tech: { techs, loading }, getTechs }) => {
   useEffect(() => {
     getTechs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -13,7 +14,7 @@ const TechSelectOptions = ({ tech: { techs, loading }, getTechs }) => {
       {!loading &&
         techs.length > 0 &&
         techs.map((tech) => (
-          <option key={tech.id} value={tech.firstName + ' ' + tech.lastName}>
+          <option key={tech._id} value={tech.firstName + ' ' + tech.lastName}>
             {tech.firstName} {tech.lastName}
           </option>
         ))}

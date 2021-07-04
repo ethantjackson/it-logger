@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { clearCurrent, updateLog } from '../../actions/LogActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import moment from 'moment';
 
 import TechSelectOptions from '../techs/TechSelectOptions';
 
@@ -27,8 +28,8 @@ const EditLogModal = ({ current, clearCurrent, updateLog }) => {
         message: message,
         attention: attention,
         tech: tech,
-        date: new Date(),
-        id: current.id,
+        date: moment(new Date()).format(),
+        _id: current._id,
       });
 
       M.toast({ html: `Log updated by ${tech}` });

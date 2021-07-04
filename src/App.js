@@ -16,7 +16,7 @@ const App = () => {
   useEffect(() => {
     //initialize Materialize JavaScript
     M.AutoInit();
-  });
+  }, []);
   return (
     <Provider store={store}>
       <>

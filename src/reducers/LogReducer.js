@@ -30,7 +30,7 @@ const LogReducer = (state = initialState, action) => {
     case DELETE_LOG:
       return {
         ...state,
-        logs: state.logs.filter((log) => log.id !== action.payload),
+        logs: state.logs.filter((log) => log._id !== action.payload),
         loading: false,
       };
     case SET_CURRENT:
@@ -47,7 +47,7 @@ const LogReducer = (state = initialState, action) => {
       return {
         ...state,
         logs: state.logs.map((log) => {
-          if (log.id !== action.payload.id) return log;
+          if (log._id !== action.payload._id) return log;
           return action.payload;
         }),
       };

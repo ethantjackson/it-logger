@@ -3,6 +3,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addLog } from '../../actions/LogActions';
+import moment from 'moment';
 
 import TechSelectOptions from '../techs/TechSelectOptions';
 
@@ -18,7 +19,7 @@ const AddLogModal = ({ addLog }) => {
       addLog({
         message: message,
         attention: attention,
-        date: new Date(),
+        date: moment(new Date()).format(),
         tech: tech,
       });
 
